@@ -40,6 +40,20 @@ jobs:
           python - <<'EOF'
           from playwright.sync_api import sync_playwright
 
+          header = """
+            <div style="font-size:8px;color:#666;width:100%;padding:4px 18mm;
+                        border-bottom:1px solid #ddd;box-sizing:border-box;">
+              Building an MCP Server with SAP Integration Suite
+            </div>"""
+
+          footer = """
+            <div style="font-size:8px;color:#666;width:100%;padding:4px 18mm;
+                        border-top:1px solid #ddd;box-sizing:border-box;
+                        display:flex;justify-content:space-between;">
+              <span>SAP BTP Trial Tutorial</span>
+              <span><span class="pageNumber"></span> / <span class="totalPages"></span></span>
+            </div>"""
+
           with sync_playwright() as p:
               browser = p.chromium.launch()
               page = browser.new_page()
@@ -48,7 +62,10 @@ jobs:
                   path="site/tutorial.pdf",
                   format="A4",
                   print_background=True,
-                  margin={"top": "20mm", "bottom": "20mm", "left": "15mm", "right": "15mm"},
+                  display_header_footer=True,
+                  header_template=header,
+                  footer_template=footer,
+                  margin={"top": "25mm", "bottom": "22mm", "left": "15mm", "right": "15mm"},
               )
               browser.close()
           print("PDF generated: site/tutorial.pdf")

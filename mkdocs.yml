@@ -63,6 +63,9 @@ plugins:
       path_to_pdf: ""
       include_css: true
 
+extra_css:
+  - stylesheets/print.css
+
 extra:
   social:
     - icon: fontawesome/brands/github

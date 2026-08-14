@@ -1,0 +1,169 @@
+@media print {
+
+  /* ── Hide all site chrome ───────────────────────────────────────────── */
+  .md-header,
+  .md-tabs,
+  .md-sidebar,
+  .md-footer,
+  .md-top,
+  .md-search,
+  .md-banner,
+  nav,
+  [data-md-component="skip"],
+  [data-md-component="announce"] {
+    display: none !important;
+  }
+
+  /* ── Page setup ─────────────────────────────────────────────────────── */
+  @page {
+    size: A4;
+    margin: 22mm 18mm 20mm 18mm;
+  }
+
+  /* ── Base typography ────────────────────────────────────────────────── */
+  body,
+  .md-content,
+  .md-typeset {
+    font-size: 10.5pt !important;
+    line-height: 1.6 !important;
+    color: #111 !important;
+    background: #fff !important;
+  }
+
+  .md-main,
+  .md-content,
+  .md-content__inner {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* ── Headings ───────────────────────────────────────────────────────── */
+  h1 {
+    font-size: 18pt !important;
+    page-break-before: always;
+    page-break-after: avoid;
+    border-bottom: 2px solid #1565c0;
+    padding-bottom: 4pt;
+    margin-top: 0 !important;
+  }
+
+  /* First h1 on print page should not force a blank first page */
+  .md-typeset h1:first-of-type {
+    page-break-before: avoid;
+  }
+
+  h2 {
+    font-size: 14pt !important;
+    page-break-after: avoid;
+    margin-top: 14pt !important;
+  }
+
+  h3 {
+    font-size: 12pt !important;
+    page-break-after: avoid;
+  }
+
+  h4, h5, h6 {
+    page-break-after: avoid;
+  }
+
+  /* ── Images ─────────────────────────────────────────────────────────── */
+  img {
+    max-width: 100% !important;
+    max-height: 180mm !important;
+    height: auto !important;
+    display: block;
+    margin: 8pt auto !important;
+    page-break-inside: avoid;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+  /* ── Code blocks ────────────────────────────────────────────────────── */
+  pre,
+  code {
+    font-size: 8.5pt !important;
+    font-family: "Courier New", Courier, monospace !important;
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+    border: 1px solid #ccc !important;
+    border-radius: 4px !important;
+    padding: 8pt !important;
+    background: #f8f8f8 !important;
+    page-break-inside: avoid;
+    color: #111 !important;
+  }
+
+  /* ── Tables ─────────────────────────────────────────────────────────── */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    page-break-inside: avoid;
+    font-size: 9.5pt !important;
+  }
+
+  th, td {
+    border: 1px solid #bbb !important;
+    padding: 5pt 8pt !important;
+    text-align: left !important;
+  }
+
+  th {
+    background: #e3f2fd !important;
+    font-weight: bold !important;
+    color: #111 !important;
+  }
+
+  /* ── Blockquotes / admonitions ──────────────────────────────────────── */
+  blockquote {
+    border-left: 3px solid #1565c0 !important;
+    padding-left: 10pt !important;
+    margin-left: 0 !important;
+    color: #333 !important;
+    page-break-inside: avoid;
+  }
+
+  .admonition,
+  details {
+    border: 1px solid #bbb !important;
+    border-radius: 4px !important;
+    padding: 8pt !important;
+    page-break-inside: avoid;
+    background: #fafafa !important;
+  }
+
+  /* ── Paragraph & list spacing ───────────────────────────────────────── */
+  p {
+    orphans: 3;
+    widows: 3;
+    page-break-inside: avoid;
+  }
+
+  ul, ol {
+    page-break-inside: avoid;
+  }
+
+  /* ── Horizontal rules ───────────────────────────────────────────────── */
+  hr {
+    border: none !important;
+    border-top: 1px solid #ddd !important;
+    margin: 10pt 0 !important;
+  }
+
+  /* ── Links ──────────────────────────────────────────────────────────── */
+  a {
+    color: #1565c0 !important;
+    text-decoration: none !important;
+  }
+
+  /* ── Hide print button itself inside the print page ────────────────── */
+  .md-button,
+  .print-site-plugin-do-not-print {
+    display: none !important;
+  }
+
+}
