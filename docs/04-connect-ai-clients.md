@@ -15,9 +15,13 @@ Both use the MCP URL and OAuth2 credentials created earlier.
 
 Open Joule Work Desktop.
 
+![Joule Work Desktop — Extensions panel](../images/step-76.png)
+
 Navigate to:
 
-**Extensions → Add MCP Server**
+**Extensions → New → Add Connector**
+
+![Joule Work Desktop — New menu with Add Connector option](../images/step-77.png)
 
 Enter:
 
@@ -29,13 +33,13 @@ Enter:
 | Client ID | `clientid` from the service key |
 | Client Secret | `clientsecret` from the service key |
 
-Select **Connect**.
+![Joule Work Desktop — Add Connector dialog with MCP URL and credentials](../images/step-79.png)
 
-The MCP Server should appear in the Extensions list with:
+Select **OK**.
 
-```text
-Status: Active
-```
+The MCP Server should appear in the Connectors list with status **Connected**.
+
+![Joule Work Desktop — MCP Server connector connected with tools available](../images/step-80.png)
 
 The tools exposed by the MCP Server are then available to Joule.
 
