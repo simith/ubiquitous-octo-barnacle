@@ -4,7 +4,7 @@
 
 This tutorial walks you through building and connecting an **MCP Server using SAP Integration Suite** in an **SAP BTP Trial** environment — from a fresh account to a deployed MCP endpoint consumable by AI clients such as **Joule Work Desktop** and **Claude Desktop**.
 
-[Save as PDF](print_page/){ .md-button .md-button--primary }
+[Download PDF](tutorial.pdf){ .md-button .md-button--primary }
 
 ---
 
@@ -62,7 +62,7 @@ You need:
 
 ---
 
-## Save as PDF
+## Download PDF
 
-Click **Save as PDF** above to open a single-page view of the complete tutorial.
-In your browser, press **Ctrl + P** (Windows) or **Cmd + P** (Mac) and choose **Save as PDF**.
+Click **Download PDF** above to download a pre-built PDF of the complete tutorial.
+The PDF is automatically regenerated on every push to `main`.

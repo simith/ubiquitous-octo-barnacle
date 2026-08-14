@@ -24,11 +24,35 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install dependencies
-        run: pip install mkdocs-material mkdocs-print-site-plugin
+      - name: Install Python dependencies
+        run: pip install mkdocs-material mkdocs-print-site-plugin playwright
 
-      - name: Build site
+      - name: Install Chromium for PDF generation
+        run: playwright install chromium --with-deps
+
+      - name: Build MkDocs site
         run: mkdocs build --strict
+
+      - name: Generate PDF from print page
+        run: |
+          python -m http.server 8000 --directory site &
+          sleep 3
+          python - <<'EOF'
+          from playwright.sync_api import sync_playwright
+
+          with sync_playwright() as p:
+              browser = p.chromium.launch()
+              page = browser.new_page()
+              page.goto("http://localhost:8000/print_page/", wait_until="networkidle")
+              page.pdf(
+                  path="site/tutorial.pdf",
+                  format="A4",
+                  print_background=True,
+                  margin={"top": "20mm", "bottom": "20mm", "left": "15mm", "right": "15mm"},
+              )
+              browser.close()
+          print("PDF generated: site/tutorial.pdf")
+          EOF
 
       - uses: actions/upload-pages-artifact@v3
         with:
