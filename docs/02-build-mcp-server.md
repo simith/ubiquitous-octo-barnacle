@@ -22,13 +22,13 @@ Integration Package
 
 Open SAP Integration Suite from the BTP subscription.
 
-![SAP Integration Suite home dashboard](../images/step-16.png)
+![SAP Integration Suite home dashboard](images/step-16.png)
 
 Navigate to:
 
 **Design → Integrations and APIs**
 
-![Integration Suite Design — Integrations and APIs package list](../images/step-17.png)
+![Integration Suite Design — Integrations and APIs package list](images/step-17.png)
 
 Create a new package.
 
@@ -42,13 +42,13 @@ Recommended fields:
 | Version | `1.0.0` |
 | Vendor | Optional |
 
-![Create integration package — header form](../images/step-18.png)
+![Create integration package — header form](images/step-18.png)
 
 Save the package.
 
 The new package initially contains no artifacts.
 
-![New package Artifacts tab — no data](../images/step-19.png)
+![New package Artifacts tab — no data](images/step-19.png)
 
 ---
 
@@ -60,25 +60,25 @@ Inside the package:
 2. Select **Add**.
 3. Choose **API**.
 
-![Add menu — select artifact type](../images/step-21.png)
+![Add menu — select artifact type](images/step-21.png)
 
 4. Select **Integration** as the runtime profile.
 
-![Add API — select runtime profile](../images/step-22.png)
+![Add API — select runtime profile](images/step-22.png)
 
 5. Select **URL or Specification**.
 
-![Add API — select a method](../images/step-24.png)
+![Add API — select a method](images/step-24.png)
 
 6. Upload the API specification obtained from SAP Business Accelerator Hub.
 7. Complete the remaining API details.
 
-![Add API — provide API details](../images/step-25.png)
+![Add API — provide API details](images/step-25.png)
 
 8. Open the **Policies** tab to review the default flow.
 9. Deploy the API.
 
-![Deploy API artifact — confirm dialog](../images/step-29.png)
+![Deploy API artifact — confirm dialog](images/step-29.png)
 
 The default policy flow is:
 
@@ -105,7 +105,7 @@ Status: Deployed
 Runtime Status: STARTED
 ```
 
-![API artifact deployed — Status: Deployed, Runtime Status: STARTED](../images/step-31.png)
+![API artifact deployed — Status: Deployed, Runtime Status: STARTED](images/step-31.png)
 
 Record the API proxy URL.
 
@@ -122,11 +122,11 @@ Inside the same package:
 1. Select **Actions → Create**.
 2. Choose **MCP Server**.
 
-![Add MCP Server — Step 1: Select Source Type](../images/step-33.png)
+![Add MCP Server — Step 1: Select Source Type](images/step-33.png)
 
 3. Select the deployed API artifact as the source.
 
-![Add MCP Server — Select an API from the available list](../images/step-37.png)
+![Add MCP Server — Select an API from the available list](images/step-37.png)
 
 4. Enter a name, for example:
 
@@ -134,11 +134,11 @@ Inside the same package:
 <PackageName>_mcpServer
 ```
 
-![Add MCP Server — Provide MCP details form](../images/step-36.png)
+![Add MCP Server — Provide MCP details form](images/step-36.png)
 
 5. Fill in the details and create the artifact.
 
-![Add MCP Server — MCP details filled](../images/step-39.png)
+![Add MCP Server — MCP details filled](images/step-39.png)
 
 The MCP Server artifact contains:
 
@@ -146,7 +146,7 @@ The MCP Server artifact contains:
 - **MCP Configuration**
 - **Policies**
 
-![MCP Server artifact — Overview tab](../images/step-42.png)
+![MCP Server artifact — Overview tab](images/step-42.png)
 
 The artifact header displays the MCP endpoint.
 
@@ -163,7 +163,7 @@ The package should now contain two artifacts:
 <MCP Server name>   → MCP Server
 ```
 
-![Integration package with both API and MCP Server artifacts](../images/step-43.png)
+![Integration package with both API and MCP Server artifacts](images/step-43.png)
 
 ---
 

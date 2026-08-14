@@ -11,11 +11,11 @@ SAP BTP Trial provides access to SAP Integration Suite and other BTP services fo
 3. Sign in with your SAP Universal ID, or register for one.
 4. Open the automatically created **trial** subaccount.
 
-![SAP BTP Cockpit landing page](../images/step-01.png)
+![SAP BTP Cockpit landing page](images/step-01.png)
 
 You should end up in the BTP Cockpit with a Global Account and a default `trial` subaccount.
 
-![Welcome to SAP BTP Trial](../images/step-12.png)
+![Welcome to SAP BTP Trial](images/step-12.png)
 
 ---
 
@@ -28,7 +28,7 @@ You should end up in the BTP Cockpit with a Global Account and a default `trial`
 2. Search for **Integration Suite**.
 3. Open the Integration Suite tile.
 
-![Service Marketplace — Integration Suite search results](../images/step-45.png)
+![Service Marketplace — Integration Suite search results](images/step-45.png)
 
 4. Select **Create**.
 5. Configure:
@@ -43,7 +43,7 @@ You should end up in the BTP Cockpit with a Global Account and a default `trial`
 
 8. Confirm that Integration Suite shows **Subscribed**.
 
-![Instances and Subscriptions — Integration Suite Subscribed](../images/step-04.png)
+![Instances and Subscriptions — Integration Suite Subscribed](images/step-04.png)
 
 > Subscription provisioning can take a few minutes. Refresh until the status changes from `Processing` to `Subscribed`.
 
@@ -74,9 +74,9 @@ PI_Integration_Developer
 Subaccount Administrator
 ```
 
-![Assign Role Collection dialog](../images/step-02.png)
+![Assign Role Collection dialog](images/step-02.png)
 
-![All required role collections assigned](../images/step-03.png)
+![All required role collections assigned](images/step-03.png)
 
 Save the changes and log out/in again so the role assignments take effect.
 
@@ -102,7 +102,7 @@ Configure:
 
 Create the instance.
 
-![Create service instance — Process Integration Runtime](../images/step-05.png)
+![Create service instance — Process Integration Runtime](images/step-05.png)
 
 When the instance has status **Created**:
 
@@ -110,7 +110,7 @@ When the instance has status **Created**:
 2. Select **Create Service Key**.
 3. Give the key a name such as `mcp-key`.
 
-![Create service key dialog](../images/step-06.png)
+![Create service key dialog](images/step-06.png)
 
 4. Open the key and record:
 
@@ -121,7 +121,7 @@ tokenurl
 url
 ```
 
-![Service key credentials JSON](../images/step-07.png)
+![Service key credentials JSON](images/step-07.png)
 
 ### Keep credentials out of Git
 
@@ -135,9 +135,9 @@ Navigate to:
 
 **Connectivity → Destinations → Create Destination**
 
-![BTP Destinations list](../images/step-08.png)
+![BTP Destinations list](images/step-08.png)
 
-![Create New Destination options](../images/step-09.png)
+![Create New Destination options](images/step-09.png)
 
 Example configuration from the tutorial:
 
@@ -156,11 +156,11 @@ Property: URL.headers.APIKey
 Value:    <your-api-key>
 ```
 
-![Destination configuration with API key additional property](../images/step-11.png)
+![Destination configuration with API key additional property](images/step-11.png)
 
 Save the destination and select **Check Connection**.
 
-![Check Connection — successful](../images/step-14.png)
+![Check Connection — successful](images/step-14.png)
 
 A successful connection should return a success message such as `200: OK` or indicate that the connection was established.
 

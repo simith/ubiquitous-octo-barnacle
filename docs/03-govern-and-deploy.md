@@ -6,7 +6,7 @@ The MCP Server is now created. Before exposing it to an AI client, configure gov
 
 Open the MCP Server artifact and select **Policies**.
 
-![MCP Server Policies tab — default flow](../images/step-46.png)
+![MCP Server Policies tab — default flow](images/step-46.png)
 
 The default flow is:
 
@@ -30,11 +30,11 @@ Authentication is pre-configured by the platform and is the first step.
 
 Select **Add Flow Step** between Authentication and Authorization.
 
-![MCP Server Policies — Add Flow Step button](../images/step-48.png)
+![MCP Server Policies — Add Flow Step button](images/step-48.png)
 
 Choose **IP Filter** from the Traffic Management section.
 
-![Add Flow Step menu — IP Filter](../images/step-50.png)
+![Add Flow Step menu — IP Filter](images/step-50.png)
 
 Place it after **Authentication** and before **Surge Protection**.
 
@@ -49,11 +49,11 @@ Configure:
 
 A single IP should use CIDR notation with `/32`.
 
-![IP Filter configured — Default Rule: Deny, Allow rule with IP address](../images/step-52.png)
+![IP Filter configured — Default Rule: Deny, Allow rule with IP address](images/step-52.png)
 
 Save the policy.
 
-![Policy flow with IP Filter added](../images/step-53.png)
+![Policy flow with IP Filter added](images/step-53.png)
 
 > Be careful with IP filtering if your client IP changes. A rule that allows only one source IP can prevent your AI client from reaching the server after a network change.
 
@@ -67,7 +67,7 @@ Select:
 
 Place it after the IP Filter.
 
-![Add Flow Step menu — Surge Protection](../images/step-55.png)
+![Add Flow Step menu — Surge Protection](images/step-55.png)
 
 Configure:
 
@@ -79,7 +79,7 @@ Duration Unit: Seconds
 
 Save.
 
-![Policy flow — IP Filter and Surge Protection added](../images/step-60.png)
+![Policy flow — IP Filter and Surge Protection added](images/step-60.png)
 
 ---
 
@@ -91,7 +91,7 @@ Select:
 
 Place it after Surge Protection.
 
-![Add Flow Step menu — Quota](../images/step-62.png)
+![Add Flow Step menu — Quota](images/step-62.png)
 
 Configure:
 
@@ -102,7 +102,7 @@ Per:   Day
 
 Save.
 
-![Quota policy configured — 50 per day](../images/step-66.png)
+![Quota policy configured — 50 per day](images/step-66.png)
 
 ---
 
@@ -148,7 +148,7 @@ Status: Deployed
 Runtime Status: STARTED
 ```
 
-![MCP Server deployed — Runtime Status: STARTED, MCP URL active](../images/step-75.png)
+![MCP Server deployed — Runtime Status: STARTED, MCP URL active](images/step-75.png)
 
 The MCP URL shown at the top of the artifact is now active.
 
