@@ -25,7 +25,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install Python dependencies
-        run: pip install mkdocs-material mkdocs-print-site-plugin playwright
+        run: pip install mkdocs-material mkdocs-print-site-plugin mkdocs-glightbox playwright
 
       - name: Install Chromium for PDF generation
         run: playwright install chromium --with-deps
