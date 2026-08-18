@@ -10,7 +10,7 @@ docs_dir: docs
 site_dir: site
 
 theme:
-  name: material
+  name: readthedocs
   palette:
     - scheme: default
       primary: blue
@@ -36,6 +36,7 @@ theme:
 nav:
   - Home: README.md
   - Tutorial:
+    - 0. Introduction: 00-introduction.md
     - 1. Prerequisites: 01-prerequisites.md
     - 2. Build MCP Server: 02-build-mcp-server.md
     - 3. Govern & Deploy: 03-govern-and-deploy.md
@@ -56,6 +57,7 @@ markdown_extensions:
 
 plugins:
   - search
+  - glightbox
   - print-site:
       add_to_navigation: true
       print_page_title: "Print / Save as PDF"
