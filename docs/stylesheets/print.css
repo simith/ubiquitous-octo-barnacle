@@ -8,9 +8,11 @@
   .md-top,
   .md-search,
   .md-banner,
-  nav,
+  .md-path,
+  [data-md-component="path"],
   [data-md-component="skip"],
-  [data-md-component="announce"] {
+  [data-md-component="announce"],
+  nav {
     display: none !important;
   }
 
@@ -78,6 +80,13 @@
     page-break-inside: avoid;
     border: 1px solid #ddd;
     border-radius: 4px;
+    box-shadow: none !important;
+  }
+
+  /* ── Suppress screen-only decorations ──────────────────────────────── */
+  .md-typeset h2 {
+    border-left: none !important;
+    padding-left: 0 !important;
   }
 
   /* ── Code blocks ────────────────────────────────────────────────────── */
