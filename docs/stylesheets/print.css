@@ -22,7 +22,22 @@
     margin: 22mm 18mm 20mm 18mm;
   }
 
+  /* ── Force light mode: override Material dark-theme variables ──────── */
+  :root,
+  [data-md-color-scheme] {
+    --md-default-bg-color:            #fff;
+    --md-default-fg-color:            #111;
+    --md-default-fg-color--light:     #444;
+    --md-default-fg-color--lighter:   #666;
+    --md-default-fg-color--lightest:  #999;
+    --md-code-bg-color:               #f5f5f5;
+    --md-code-fg-color:               #111;
+    --md-typeset-color:               #111;
+    --md-admonition-bg-color:         #fafafa;
+  }
+
   /* ── Base typography ────────────────────────────────────────────────── */
+  html,
   body,
   .md-content,
   .md-typeset {
@@ -32,12 +47,18 @@
     background: #fff !important;
   }
 
+  .md-grid,
+  .md-container,
   .md-main,
+  .md-main__inner,
   .md-content,
   .md-content__inner {
     max-width: 100% !important;
+    width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
   }
 
   /* ── Headings ───────────────────────────────────────────────────────── */

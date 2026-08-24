@@ -58,6 +58,7 @@ jobs:
               browser = p.chromium.launch()
               page = browser.new_page()
               page.goto("http://localhost:8000/print_page/", wait_until="networkidle")
+              page.evaluate("document.documentElement.setAttribute('data-md-color-scheme', 'default')")
               page.pdf(
                   path="site/tutorial.pdf",
                   format="A4",
