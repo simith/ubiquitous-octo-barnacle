@@ -84,4 +84,3 @@ The supplied tutorial describes this end-to-end sequence:
 10. Deployment
 11. AI Client Connection
 
-This repository reorganizes those same steps into a GitHub-oriented documentation flow. fileciteturn0file0L549-L563
