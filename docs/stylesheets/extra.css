@@ -1,0 +1,55 @@
+/* ── SAP blue primary accent override ───────────────────────────────────── */
+[data-md-color-primary="blue"] {
+  --md-primary-fg-color:        #0070f2;
+  --md-primary-fg-color--light: #1e7cf3;
+  --md-primary-fg-color--dark:  #0058c7;
+}
+
+/* ── Screenshot images: shadow + rounded corners ────────────────────────── */
+.md-typeset img {
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  display: block;
+  margin: 1.2rem auto;
+}
+
+/* Stronger shadow in dark mode so white screenshots stand out */
+[data-md-color-scheme="slate"] .md-typeset img {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── Slightly wider content area ────────────────────────────────────────── */
+.md-grid {
+  max-width: 1280px;
+}
+
+/* ── Better line height for readability ─────────────────────────────────── */
+.md-typeset {
+  line-height: 1.75;
+}
+
+/* ── Step number headings — subtle left accent bar ──────────────────────── */
+.md-typeset h2 {
+  border-left: 4px solid var(--md-primary-fg-color);
+  padding-left: 0.6rem;
+}
+
+/* ── Admonition tweaks — slightly more padding ──────────────────────────── */
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 6px;
+}
+
+@media print {
+  .md-typeset img {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    border: 1px solid #ddd !important;
+  }
+  .md-typeset h2 {
+    border-left: none !important;
+    padding-left: 0 !important;
+  }
+}

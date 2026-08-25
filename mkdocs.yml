@@ -10,28 +10,36 @@ docs_dir: docs
 site_dir: site
 
 theme:
-  name: readthedocs
+  name: material
   palette:
-    - scheme: default
-      primary: blue
-      accent: light-blue
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
     - scheme: slate
       primary: blue
-      accent: light-blue
+      accent: light blue
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
+    - scheme: default
+      primary: blue
+      accent: light blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+  font:
+    text: Roboto
+    code: Roboto Mono
   features:
     - navigation.tabs
     - navigation.sections
     - navigation.top
     - navigation.footer
+    - navigation.instant
+    - navigation.tracking
+    - navigation.progress
+    - navigation.path
     - search.suggest
     - search.highlight
     - content.code.copy
+    - toc.follow
 
 nav:
   - Home: README.md
@@ -59,13 +67,14 @@ plugins:
   - search
   - glightbox
   - print-site:
-      add_to_navigation: true
+      add_to_navigation: false
       print_page_title: "Print / Save as PDF"
       add_print_site_banner: false
       path_to_pdf: ""
-      include_css: true
+      include_css: false
 
 extra_css:
+  - stylesheets/extra.css
   - stylesheets/print.css
 
 extra:
