@@ -6,6 +6,9 @@ This section prepares the SAP BTP environment required for the MCP Server.
 
 SAP BTP Trial provides access to SAP Integration Suite and other BTP services for development and learning.
 
+> **Need a step-by-step walkthrough?** Follow the official SAP tutorial:
+> [Create a Free Account on SAP BTP Trial](https://developers.sap.com/tutorials/hcp-create-trial-account/)
+
 1. Go to the SAP BTP Trial page.
 2. Select **Try for Free**.
 3. Sign in with your SAP Universal ID, or register for one.
@@ -20,6 +23,9 @@ You should end up in the BTP Cockpit with a Global Account and a default `trial`
 ---
 
 ## 1.2 Subscribe to SAP Integration Suite
+
+> **Need a step-by-step walkthrough?** Follow the official SAP tutorial:
+> [Set Up SAP Integration Suite Trial](https://developers.sap.com/tutorials/cp-starter-isuite-onboard-subscribe)
 
 1. In the BTP Cockpit, open:
 
