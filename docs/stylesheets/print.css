@@ -173,8 +173,92 @@
     page-break-inside: avoid;
   }
 
-  ul, ol {
+  /* Long lists may break naturally; only small lists avoid mid-break */
+  ul:not(.contains-task-list):not(.task-list),
+  ol {
     page-break-inside: avoid;
+  }
+
+  /* ── Keep headings with the content that follows them ───────────────── */
+  .md-typeset h2 + p,
+  .md-typeset h2 + ol,
+  .md-typeset h2 + ul,
+  .md-typeset h2 + .admonition,
+  .md-typeset h3 + p,
+  .md-typeset h3 + ol,
+  .md-typeset h3 + ul,
+  .md-typeset h4 + p,
+  .md-typeset h4 + ol {
+    page-break-before: avoid;
+  }
+
+  /* ── Keep images with the content before them ───────────────────────── */
+  .md-typeset p > img {
+    page-break-before: avoid;
+  }
+  .md-typeset p:has(> img) {
+    page-break-before: avoid;
+    page-break-inside: avoid;
+  }
+  /* Keep image paragraphs after step lists */
+  .md-typeset ol + p,
+  .md-typeset ul + p {
+    page-break-before: avoid;
+  }
+
+  /* ── Hide screen-only interactive widgets ───────────────────────────── */
+  #tp-hw,
+  #search-nav,
+  #tp-overview,
+  .tp-ov-row,
+  .tp-ov-overall {
+    display: none !important;
+  }
+
+  /* ── Task-list items: replace colored icons with plain checkboxes ────── */
+
+  /* 1. Hide the custom SVG/CSS indicator Material injects */
+  .task-list-item .task-list-indicator,
+  .task-list-item span.task-list-indicator {
+    display: none !important;
+  }
+
+  /* 2. Hide the actual <input> element */
+  .task-list-item input[type="checkbox"] {
+    display: none !important;
+  }
+
+  /* 3. Inject a plain "□" before each item label */
+  ul.contains-task-list,
+  ul.task-list {
+    list-style: none !important;
+    padding-left: 0.5em !important;
+  }
+
+  .task-list-item {
+    position: relative !important;
+    padding-left: 1.6em !important;
+    margin-bottom: 4pt !important;
+  }
+
+  .task-list-item > label::before,
+  .task-list-item > p::before {
+    content: "\25A1  ";   /* ☐ WHITE SQUARE */
+    position: absolute;
+    left: 0;
+    color: #444;
+    font-size: 1em;
+    line-height: 1.5;
+  }
+
+  /* 4. Strip all green/coloured text — plain black in print */
+  .task-list-item > label,
+  .task-list-item > label *,
+  .task-list-item > p,
+  .task-list-item.tp-done > label,
+  .task-list-item.tp-done > label *,
+  .task-list-item.tp-done > p {
+    color: #111 !important;
   }
 
   /* ── Horizontal rules ───────────────────────────────────────────────── */
