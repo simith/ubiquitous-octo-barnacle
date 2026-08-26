@@ -32,11 +32,11 @@ AI Client  ──MCP──►  SAP Integration Suite MCP Server  ──►  SAP 
 
 ## What you need
 
-!!! info “Prerequisites”
-    - A free SAP BTP Trial account — [create one here](https://developers.sap.com/tutorials/hcp-create-trial-account/)
-    - Basic familiarity with SAP BTP Cockpit
-    - An MCP-compatible AI client (Claude Desktop, Cursor, or similar)
+**Prerequisites**
 
-!!! tip “Estimated time”
-    Allow **60–90 minutes** to complete the full tutorial end-to-end.
+- A free SAP BTP Trial account — [create one here](https://developers.sap.com/tutorials/hcp-create-trial-account/)
+- Basic familiarity with SAP BTP Cockpit
+- An MCP-compatible AI client (Claude Desktop, Cursor, or similar)
+
+**Estimated time:** 60–90 minutes end-to-end.
 
