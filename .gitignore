@@ -20,3 +20,10 @@ venv/
 
 # MkDocs build output
 site/
+
+# Original (unblurred) screenshots — never commit
+docs/images/originals/
+docs/images/new/
+
+# Generated PDF preview
+tutorial-preview.pdf

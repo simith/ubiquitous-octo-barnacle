@@ -1,178 +1,47 @@
-# 3. Govern & Deploy the MCP Server
+# 3. Publish to Developer Hub
 
-The MCP Server is now created. Before exposing it to an AI client, configure governance policies and deploy it.
+The SAP API Management Developer Hub is the catalog where AI agents discover and subscribe to your MCP Server.
 
-## 3.1 Open the Policies tab
+## 3.1 Navigate to Developer Hub
 
-Open the MCP Server artifact and select **Policies**.
+1. In SAP Integration Suite, click the **Explore our ecosystem** icon in the header bar (fourth icon from the right).
+2. Click **Developer Hub**.
 
-![MCP Server Policies tab — default flow](images/step-46.png)
-
-The default flow is:
-
-```text
-Agent
-  ↓
-MCP
-  ↓
-Authentication
-  ↓
-Authorization
-  ↓
-Request Reply
-```
-
-Authentication is pre-configured by the platform and is the first step.
+![Integration Suite — Explore our ecosystem: publish to Developer Hub](images/step-29.png)
 
 ---
 
-## 3.2 Add an IP Filter
+## 3.2 Create a Product from Your MCP Server
 
-Select **Add Flow Step** between Authentication and Authorization.
+1. In the Developer Hub, go to **Admin Center → Manage Content**.
+2. Click the **Business Systems** tab. Your Integration Suite subaccount appears as a registered business system.
 
-![MCP Server Policies — Add Flow Step button](images/step-48.png)
+![Developer Hub — Manage Content: Business Systems tab](images/step-31.png)
 
-Choose **IP Filter** from the Traffic Management section.
+3. Click on your business system to open it.
+4. Go to the **MCP Servers** tab. Your deployed MCP Server is listed here. Select it by checking the box.
 
-![Add Flow Step menu — IP Filter](images/step-50.png)
+![Developer Hub — Business System: MCP Servers tab with MCP Server selected](images/step-32.png)
 
-Place it after **Authentication** and before **Surge Protection**.
+5. Click **Create Product** and enter a name, ID, and description of your choice.
 
-Configure:
+![Developer Hub — Create Product dialog](images/step-33.png)
 
-| Setting | Value |
-|---|---|
-| Default Rule | `Deny` |
-| Type | `X-Forwarded-For` |
-| Additional rule | `Allow` |
-| IP Address | `<your-ip>/32` |
+6. Click **Publish**. A confirmation dialog appears.
 
-A single IP should use CIDR notation with `/32`.
+![Developer Hub — publish request confirmation dialog](images/step-34.png)
 
-![IP Filter configured — Default Rule: Deny, Allow rule with IP address](images/step-52.png)
+7. Navigate to **Scheduled Requests** to monitor the publish status. Wait until the status changes to **Success**.
 
-Save the policy.
-
-![Policy flow with IP Filter added](images/step-53.png)
-
-> Be careful with IP filtering if your client IP changes. A rule that allows only one source IP can prevent your AI client from reaching the server after a network change.
+![Developer Hub — Scheduled Requests showing publish status](images/step-35.png)
 
 ---
 
-## 3.3 Add Surge Protection
+## Developer Hub ready
 
-Select:
+- [ ] Navigated to Developer Hub via Explore our ecosystem
+- [ ] MCP Server found in Business System
+- [ ] Product created in Developer Hub
+- [ ] Publish status shows Success in Scheduled Requests
 
-**Add Flow Step → Traffic Management → Surge Protection**
-
-Place it after the IP Filter.
-
-![Add Flow Step menu — Surge Protection](images/step-55.png)
-
-Configure:
-
-```text
-Calls:         20
-Duration:      1
-Duration Unit: Seconds
-```
-
-Save.
-
-![Policy flow — IP Filter and Surge Protection added](images/step-60.png)
-
----
-
-## 3.4 Add a Quota
-
-Select:
-
-**Add Flow Step → Traffic Management → Quota**
-
-Place it after Surge Protection.
-
-![Add Flow Step menu — Quota](images/step-62.png)
-
-Configure:
-
-```text
-Allow: 50
-Per:   Day
-```
-
-Save.
-
-![Quota policy configured — 50 per day](images/step-66.png)
-
----
-
-## 3.5 Verify the final policy flow
-
-The tutorial's final flow is:
-
-```text
-Authentication
-      ↓
-IPFilter
-      ↓
-SurgeProtection
-      ↓
-Quota
-      ↓
-Authorization
-      ↓
-Request Reply
-```
-
-Before deployment:
-
-- [ ] No policy step shows a red validation badge
-- [ ] IP Filter is configured
-- [ ] Surge Protection is configured
-- [ ] Quota is configured
-- [ ] Changes are saved
-
----
-
-## 3.6 Deploy the MCP Server
-
-In the MCP Server artifact:
-
-1. Click **Save**.
-2. Verify that there are no red validation badges.
-3. Click **Deploy**.
-4. Wait for:
-
-```text
-Status: Deployed
-Runtime Status: STARTED
-```
-
-![MCP Server deployed — Runtime Status: STARTED, MCP URL active](images/step-75.png)
-
-The MCP URL shown at the top of the artifact is now active.
-
-Copy the MCP URL. You'll use it in the AI client configuration.
-
-### If deployment fails
-
-Start with the policy flow.
-
-A red validation badge indicates a configuration problem. Resolve the policy error, save again, and redeploy.
-
----
-
-## Deployment complete
-
-You should now have:
-
-```text
-MCP URL
-OAuth2 token URL
-OAuth2 client ID
-OAuth2 client secret
-```
-
-Keep the credentials private.
-
-Next: [Connect an AI client →](04-connect-ai-clients.md)
+Next: [Subscribe via Developer Hub →](04-connect-ai-clients.md)

@@ -27,7 +27,7 @@ The LLM provides the reasoning and intelligence. MCP provides the connection to 
 By the end of this tutorial you will have a working MCP Server hosted on SAP Integration Suite that any MCP-compatible AI client can discover and call.
 
 ```
-AI Client  ──MCP──►  SAP Integration Suite MCP Server  ──►  SAP Backend API
+AI Client  ---MCP--->  SAP Integration Suite MCP Server  --->  SAP Backend API
 ```
 
 ## What you need
