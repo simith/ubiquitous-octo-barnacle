@@ -52,8 +52,8 @@ nav:
     - 0. Introduction: 00-introduction.md
     - 1. Prerequisites: 01-prerequisites.md
     - 2. Build MCP Server: 02-build-mcp-server.md
-    - 3. Govern & Deploy: 03-govern-and-deploy.md
-    - 4. Connect AI Clients: 04-connect-ai-clients.md
+    - 3. Publish to Developer Hub: 03-govern-and-deploy.md
+    - 4. Subscribe via Developer Hub: 04-connect-ai-clients.md
     - 5. End-to-End Checklist: 05-end-to-end-checklist.md
 
 markdown_extensions:
@@ -96,6 +96,7 @@ extra_css:
 
 extra_javascript:
   - javascripts/search-utils.js
+  - javascripts/progress.js
 
 extra:
   social:

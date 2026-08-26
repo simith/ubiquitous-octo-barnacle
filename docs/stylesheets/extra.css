@@ -68,12 +68,93 @@
 mark { background: #ffe066; color: #1a1a1a; border-radius: 2px; padding: 0 1px; }
 mark.sn-active { background: #ff9800; outline: 2px solid #ff9800; }
 
-
+/* ── Abbreviation underlines removed ────────────────────────────────────── */
 abbr,
 .md-typeset abbr {
   text-decoration: none !important;
   border-bottom: none !important;
   cursor: default !important;
+}
+
+/* ── Tutorial progress widget (header bar) ───────────────────────────────── */
+#tp-hw {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px 0 4px;
+  color: var(--md-primary-bg-color);
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+.tp-hw-label {
+  font-weight: 500;
+  opacity: 0.85;
+  letter-spacing: 0.02em;
+}
+.tp-hw-track {
+  width: 80px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 2px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.tp-hw-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 2px;
+  transition: width .5s ease, background .5s ease;
+}
+.tp-hw-pct {
+  font-weight: 700;
+  min-width: 32px;
+  font-size: 0.75rem;
+}
+
+/* ── Checked checklist items turn green ─────────────────────────────────── */
+.task-list-item.tp-done > label,
+.task-list-item.tp-done > p {
+  color: #2e7d32 !important;
+}
+[data-md-color-scheme="slate"] .task-list-item.tp-done > label,
+[data-md-color-scheme="slate"] .task-list-item.tp-done > p {
+  color: #81c784 !important;
+}
+
+/* ── Overview page progress table ───────────────────────────────────────── */
+.tp-track {
+  height: 8px;
+  background: var(--md-default-fg-color--lightest, #e0e0e0);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.tp-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width .35s ease, background .35s ease;
+}
+.tp-ov-overall { margin-bottom: 1.25rem; }
+.tp-ov-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  font-size: .9rem;
+}
+.tp-ov-overall-track { height: 12px !important; }
+.tp-ov-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: .65rem 0;
+}
+.tp-ov-label { min-width: 230px; font-size: .9rem; }
+.tp-ov-track { flex: 1; }
+.tp-ov-count {
+  min-width: 52px;
+  text-align: right;
+  font-size: .85rem;
+  color: var(--md-default-fg-color--light);
 }
 
 @media print {
