@@ -49,12 +49,14 @@ theme:
 nav:
   - Home: README.md
   - Tutorial:
-    - 0. Introduction: 00-introduction.md
-    - 1. Prerequisites: 01-prerequisites.md
-    - 2. Build MCP Server: 02-build-mcp-server.md
-    - 3. Publish to Developer Hub: 03-govern-and-deploy.md
-    - 4. Subscribe via Developer Hub: 04-connect-ai-clients.md
-    - 5. End-to-End Checklist: 05-end-to-end-checklist.md
+    - 0. Prerequisites: 00-prerequisites.md
+    - 1. Purchase Order MCP: 01-purchase-order-mcp.md
+    - 2. Business Partner MCP: 02-business-partner-mcp.md
+    - 3. Spotify MCP: 03-spotify-mcp.md
+    - 4. Twilio Email MCP: 04-twilio-mcp.md
+    - 5. AI Agent Client: 05-ai-agent.md
+    - 6. Progress Checklist: 06-checklist.md
+    - 7. Why This Matters: 07-why-this-matters.md
 
 markdown_extensions:
   - admonition
@@ -97,6 +99,7 @@ extra_css:
 extra_javascript:
   - javascripts/search-utils.js
   - javascripts/progress.js
+  - javascripts/external-links.js
 
 extra:
   social:

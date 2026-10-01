@@ -2,18 +2,22 @@
   var STORE = 'sap-mcp-progress';
 
   var PAGE_TOTALS = {
-    '01-prerequisites':      6,
-    '02-build-mcp-server':   6,
-    '03-govern-and-deploy':  4,
-    '04-connect-ai-clients': 5,
+    '00-prerequisites':        2,
+    '01-purchase-order-mcp':   11,
+    '02-business-partner-mcp': 6,
+    '03-spotify-mcp':          8,
+    '04-twilio-mcp':           8,
+    '05-ai-agent':             4,
   };
-  var GRAND_TOTAL = 21;
+  var GRAND_TOTAL = 39;
 
   var PAGES = [
-    { id: '01-prerequisites',     label: '1. Prerequisites',               href: '../01-prerequisites/' },
-    { id: '02-build-mcp-server',  label: '2. Build the MCP Server',        href: '../02-build-mcp-server/' },
-    { id: '03-govern-and-deploy', label: '3. Publish to Developer Hub',    href: '../03-govern-and-deploy/' },
-    { id: '04-connect-ai-clients',label: '4. Subscribe via Developer Hub', href: '../04-connect-ai-clients/' },
+    { id: '00-prerequisites',        label: '0. Prerequisites',          href: '../00-prerequisites/' },
+    { id: '01-purchase-order-mcp',   label: '1. Purchase Order MCP',     href: '../01-purchase-order-mcp/' },
+    { id: '02-business-partner-mcp', label: '2. Business Partner MCP',   href: '../02-business-partner-mcp/' },
+    { id: '03-spotify-mcp',          label: '3. Spotify MCP',            href: '../03-spotify-mcp/' },
+    { id: '04-twilio-mcp',           label: '4. Twilio Email MCP',       href: '../04-twilio-mcp/' },
+    { id: '05-ai-agent',             label: '5. AI Agent Client',        href: '../05-ai-agent/' },
   ];
 
   function load() {

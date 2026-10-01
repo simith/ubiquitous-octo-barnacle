@@ -1,0 +1,296 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Twilio Email API",
+    "description": "Send transactional and marketing emails via Twilio Comms API",
+    "version": "1.0",
+    "contact": {
+      "url": "https://www.twilio.com/docs/sendgrid/api-reference"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://comms.twilio.com/v1"
+    }
+  ],
+  "security": [
+    {
+      "basicAuth": []
+    }
+  ],
+  "paths": {
+    "/Emails": {
+      "post": {
+        "operationId": "sendEmail",
+        "summary": "Send an email",
+        "description": "Send a transactional email to one or more recipients",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendEmailRequest"
+              },
+              "example": {
+                "from": {
+                  "address": "ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx@twilio.email",
+                  "name": "My App"
+                },
+                "to": [
+                  {
+                    "address": "recipient@example.com"
+                  }
+                ],
+                "content": {
+                  "subject": "Your Order Has Been Confirmed!",
+                  "html": "<p>Thank you for your order!</p>"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Email accepted for delivery",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailOperationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - invalid credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Emails/Operations/{operationId}": {
+      "get": {
+        "operationId": "getEmailOperation",
+        "summary": "Get email operation status",
+        "description": "Retrieve the status of a previously submitted email operation",
+        "parameters": [
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The operation ID returned when the email was sent",
+            "example": "comms_operation_01m3p2dxxyew5vsx0n3v8z6b0g"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation status retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailOperationStatus"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Operation not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic",
+        "description": "Twilio Account SID as username, Auth Token as password"
+      }
+    },
+    "schemas": {
+      "EmailAddress": {
+        "type": "object",
+        "required": [
+          "address"
+        ],
+        "properties": {
+          "address": {
+            "type": "string",
+            "format": "email",
+            "description": "Email address",
+            "example": "recipient@example.com"
+          },
+          "name": {
+            "type": "string",
+            "description": "Display name",
+            "example": "John Doe"
+          }
+        }
+      },
+      "EmailContent": {
+        "type": "object",
+        "required": [
+          "subject"
+        ],
+        "properties": {
+          "subject": {
+            "type": "string",
+            "description": "Email subject line",
+            "example": "Your Order Has Been Confirmed!"
+          },
+          "html": {
+            "type": "string",
+            "description": "HTML body of the email",
+            "example": "<p>Thank you for your order!</p>"
+          },
+          "text": {
+            "type": "string",
+            "description": "Plain text body (fallback for HTML)",
+            "example": "Thank you for your order!"
+          }
+        }
+      },
+      "SendEmailRequest": {
+        "type": "object",
+        "required": [
+          "from",
+          "to",
+          "content"
+        ],
+        "properties": {
+          "from": {
+            "$ref": "#/components/schemas/EmailAddress",
+            "description": "Sender email address (must use AccountSid@twilio.email format for trial)"
+          },
+          "to": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailAddress"
+            },
+            "description": "List of recipient email addresses",
+            "minItems": 1
+          },
+          "cc": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailAddress"
+            },
+            "description": "CC recipients"
+          },
+          "bcc": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailAddress"
+            },
+            "description": "BCC recipients"
+          },
+          "replyTo": {
+            "$ref": "#/components/schemas/EmailAddress",
+            "description": "Reply-to address"
+          },
+          "content": {
+            "$ref": "#/components/schemas/EmailContent"
+          }
+        }
+      },
+      "EmailOperationResponse": {
+        "type": "object",
+        "properties": {
+          "operationId": {
+            "type": "string",
+            "description": "Unique ID for tracking this email operation",
+            "example": "comms_operation_01m3p2dxxyew5vsx0n3v8z6b0g"
+          },
+          "operationLocation": {
+            "type": "string",
+            "description": "Relative URL to check operation status",
+            "example": "/Emails/Operations/comms_operation_01m3p2dxxyew5vsx0n3v8z6b0g"
+          }
+        }
+      },
+      "EmailOperationStatus": {
+        "type": "object",
+        "properties": {
+          "operationId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "queued",
+              "processing",
+              "delivered",
+              "failed"
+            ]
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "ErrorDetail": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer"
+          },
+          "message": {
+            "type": "string"
+          },
+          "infoUrl": {
+            "type": "string"
+          },
+          "context": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ErrorDetail"
+            }
+          }
+        }
+      }
+    }
+  }
+}

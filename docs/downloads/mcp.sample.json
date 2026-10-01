@@ -1,0 +1,48 @@
+{
+  "servers": [
+    {
+      "alias": "po",
+      "name": "purchaseordermcp",
+      "domain": "Procurement / Purchase Orders",
+      "url": "https://YOUR_IS_TENANT.integration.cloud.sap/purchaseordermcp",
+      "token_url": "https://YOUR_AUTH_DOMAIN.authentication.REGION.hana.ondemand.com/oauth/token",
+      "client_id": "YOUR_CLIENT_ID_FOR_PO",
+      "client_secret": "YOUR_CLIENT_SECRET_FOR_PO"
+    },
+    {
+      "alias": "bp",
+      "name": "businesspartnermcp",
+      "domain": "CRM / Business Partners",
+      "url": "https://YOUR_IS_TENANT.integration.cloud.sap/businesspartnermcp",
+      "token_url": "https://YOUR_AUTH_DOMAIN.authentication.REGION.hana.ondemand.com/oauth/token",
+      "client_id": "YOUR_CLIENT_ID_FOR_BP",
+      "client_secret": "YOUR_CLIENT_SECRET_FOR_BP"
+    },
+    {
+      "alias": "spotify",
+      "name": "spotifymcp",
+      "domain": "Media / Spotify Catalog",
+      "url": "https://YOUR_IS_TENANT.integration.cloud.sap/spotifymcp",
+      "token_url": "https://YOUR_AUTH_DOMAIN.authentication.REGION.hana.ondemand.com/oauth/token",
+      "client_id": "YOUR_CLIENT_ID_FOR_SPOTIFY",
+      "client_secret": "YOUR_CLIENT_SECRET_FOR_SPOTIFY"
+    },
+    {
+      "alias": "email",
+      "name": "emailmcp",
+      "domain": "Comms / Transactional Email",
+      "url": "https://YOUR_IS_TENANT.integration.cloud.sap/emailmcp",
+      "token_url": "https://YOUR_AUTH_DOMAIN.authentication.REGION.hana.ondemand.com/oauth/token",
+      "client_id": "YOUR_CLIENT_ID_FOR_EMAIL",
+      "client_secret": "YOUR_CLIENT_SECRET_FOR_EMAIL"
+    }
+  ],
+
+  "llm": {
+    "_comment": "OPTIONAL. Only Option A (mcp_agent.py) reads this block. The menu client (Option B) ignores it. Leave as-is if you have no AI key.",
+    "base_url": "https://api.anthropic.com/",
+    "api_key": "YOUR_ANTHROPIC_API_KEY_OPTIONAL",
+    "model": "claude-sonnet-4-6",
+    "max_tokens": 2048
+  }
+}
