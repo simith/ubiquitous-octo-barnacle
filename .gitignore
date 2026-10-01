@@ -22,8 +22,9 @@ venv/
 site/
 
 # Original (unblurred) screenshots — never commit
-docs/images/originals/
 docs/images/new/
+docs/images/originals/
+screenshots/
 
 # Generated PDF preview
 tutorial-preview.pdf
