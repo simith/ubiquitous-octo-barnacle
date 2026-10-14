@@ -1,6 +1,6 @@
-# 0. Prerequisites
+# Prerequisites
 
-This page assumes you have already completed the one-time SAP BTP setup. If you haven't, follow the links below before continuing. All other steps in this tutorial start from inside Integration Suite.
+This page assumes you have already completed the one-time SAP BTP setup. If you haven't, follow the links below before continuing. All other steps in this workshop start from inside Integration Suite.
 
 ---
 
@@ -20,7 +20,7 @@ Once done, confirm:
 
 ## Opening Integration Suite
 
-This is your starting point for every step in this tutorial.
+This is your starting point for every step in this workshop.
 
 1. Sign in to the [BTP Cockpit](https://cockpit.hanatrial.ondemand.com/)
 2. Open your **trial** subaccount
@@ -47,4 +47,4 @@ Integration Suite
 
 The **Developer Hub** (for publishing and subscribing) is reached through the **Explore our ecosystem** icon in the Integration Suite header bar.
 
-Next: [Build the Purchase Order MCP Server →](01-purchase-order-mcp.md)
+Next: [Build the Purchase Order MCP Server →](bah-01-purchase-order.md)

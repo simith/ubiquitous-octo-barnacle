@@ -48,15 +48,18 @@ theme:
 
 nav:
   - Home: README.md
-  - Tutorial:
-    - 0. Prerequisites: 00-prerequisites.md
-    - 1. Purchase Order MCP: 01-purchase-order-mcp.md
-    - 2. Business Partner MCP: 02-business-partner-mcp.md
-    - 3. Spotify MCP: 03-spotify-mcp.md
-    - 4. Twilio Email MCP: 04-twilio-mcp.md
-    - 5. AI Agent Client: 05-ai-agent.md
-    - 6. Progress Checklist: 06-checklist.md
-    - 7. Why This Matters: 07-why-this-matters.md
+  - SAP BAH MCP Workshop:
+    - Overview: bah-00-overview.md
+    - Prerequisites: 00-prerequisites.md
+    - 1. Purchase Order MCP: bah-01-purchase-order.md
+    - 2. Business Partner MCP: bah-02-business-partner.md
+    - 3. Inbound Delivery MCP: bah-03-inbound-delivery.md
+    - 4. Material Stock MCP: bah-04-material-stock.md
+    - 5. AI Agent Client: bah-05-ai-agent.md
+    - Why This Matters: bah-06-why-this-matters.md
+  - External APIs (Optional):
+    - Spotify MCP: 03-spotify-mcp.md
+    - Twilio Email MCP: 04-twilio-mcp.md
 
 markdown_extensions:
   - admonition
