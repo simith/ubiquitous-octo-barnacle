@@ -1,6 +1,9 @@
 # 3. Spotify MCP Server
 
-The Spotify MCP Server introduces a **different pattern** from Sections 1 and 2. Because Spotify authenticates with **OAuth2 Client Credentials** rather than a header API key, there is no API artifact — you upload an OpenAPI spec directly to the MCP Server artifact, create a **Security Material** to hold the OAuth2 credentials, and manually configure the **Policies** tab.
+!!! info "Optional — not part of the core workshop"
+    This section is an **optional extension**. The main workshop builds four MCP Servers on **SAP BAH** APIs (see the [SAP BAH MCP Workshop](bah-00-overview.md)). This page and the next (Twilio) show the *same* MCP pattern applied to **external public APIs** — useful when the backend is not a BAH API and you must wire up authentication yourself. Take it up only if you're interested.
+
+The Spotify MCP Server introduces a **different pattern** from the BAH servers. Because Spotify authenticates with **OAuth2 Client Credentials** rather than a header API key, there is no API artifact — you upload an OpenAPI spec directly to the MCP Server artifact, create a **Security Material** to hold the OAuth2 credentials, and manually configure the **Policies** tab.
 
 **What you will build:**
 
@@ -9,7 +12,7 @@ AI Client  ──MCP──▶  SAP IS MCP Server  ──OAuth2 CC──▶  Spot
 ```
 
 !!! info "Why this pattern is different"
-    Sections 1 and 2 used BAH APIs that authenticate with a static **API key sent as a request header** — so we wrapped each one in an **API artifact** whose Content Modifier injects that key. Spotify is different: it uses the **OAuth2 Client Credentials** flow, where you exchange a client ID + secret for a short-lived access token on every call. For that flow, no API artifact is needed — an **MCP Server artifact plus a Security Material** (which stores the credentials and fetches the token for you) is enough. This is the pattern for any backend that authenticates with OAuth2 client credentials.
+    The BAH servers used APIs that authenticate with a static **API key sent as a request header** — so we wrapped each one in an **API artifact** whose Content Modifier injects that key. Spotify is different: it uses the **OAuth2 Client Credentials** flow, where you exchange a client ID + secret for a short-lived access token on every call. For that flow, no API artifact is needed — an **MCP Server artifact plus a Security Material** (which stores the credentials and fetches the token for you) is enough. This is the pattern for any backend that authenticates with OAuth2 client credentials.
 
 ---
 
@@ -139,9 +142,9 @@ SAP Integration Suite stores backend credentials securely as **Security Material
 
 ## Step 5 — Deploy → Developer Hub → Subscribe
 
-Follow the same steps as [Section 1, Parts G–I](01-purchase-order-mcp.md#part-g-deploy-the-mcp-server):
+Follow the same steps as [Section 1, Parts G–I](bah-01-purchase-order.md#part-g-deploy-the-mcp-server):
 
-- Add the `uaa.resource` scope on the MCP Server's **Authorization → Policy Setting → Scope** (same as [Section 1, Part F](01-purchase-order-mcp.md#part-f-add-the-mcp-server-artifact)), so the tokens Developer Hub issues are accepted
+- Add the `uaa.resource` scope on the MCP Server's **Authorization → Policy Setting → Scope** (same as [Section 1, Part F](bah-01-purchase-order.md#part-f-add-the-mcp-server-artifact)), so the tokens Developer Hub issues are accepted
 - Deploy the MCP Server → wait for **STARTED**
 - Publish a product in Developer Hub
 - Create an agent subscription

@@ -1,6 +1,9 @@
 # 4. Twilio Email MCP Server
 
-The Twilio Email MCP Server follows the same **external spec pattern** as Section 3 (Spotify) — no API artifact, manual Policies configuration. The difference is the authentication type: instead of OAuth2, Twilio uses **HTTP Basic Auth** (Account SID as username, Auth Token as password).
+!!! info "Optional — not part of the core workshop"
+    Like the Spotify section, this is an **optional extension** that applies the MCP pattern to an external public API. The core workshop is the [SAP BAH MCP Workshop](bah-00-overview.md).
+
+The Twilio Email MCP Server follows the same **external spec pattern** as the [Spotify section](03-spotify-mcp.md) — no API artifact, manual Policies configuration. The difference is the authentication type: instead of OAuth2, Twilio uses **HTTP Basic Auth** (Account SID as username, Auth Token as password).
 
 **What you will build:**
 
@@ -112,9 +115,9 @@ This spec exposes two tools:
 
 ## Step 5 — Deploy → Developer Hub → Subscribe
 
-Follow [Section 1, Parts G–I](01-purchase-order-mcp.md#part-g-deploy-the-mcp-server):
+Follow [Section 1, Parts G–I](bah-01-purchase-order.md#part-g-deploy-the-mcp-server):
 
-- Add the `uaa.resource` scope on the MCP Server's **Authorization → Policy Setting → Scope** (same as [Section 1, Part F](01-purchase-order-mcp.md#part-f-add-the-mcp-server-artifact)), so the tokens Developer Hub issues are accepted
+- Add the `uaa.resource` scope on the MCP Server's **Authorization → Policy Setting → Scope** (same as [Section 1, Part F](bah-01-purchase-order.md#part-f-add-the-mcp-server-artifact)), so the tokens Developer Hub issues are accepted
 - Deploy → **STARTED**
 - Publish a product in Developer Hub
 - Create an agent subscription
@@ -174,4 +177,4 @@ When an AI agent (or your own client) calls `post_Emails`, the arguments must be
 - [ ] Product published and agent subscription created
 - [ ] Credentials saved
 
-Next: [AI Agent Client →](05-ai-agent.md)
+Next: [AI Agent Client →](bah-05-ai-agent.md)

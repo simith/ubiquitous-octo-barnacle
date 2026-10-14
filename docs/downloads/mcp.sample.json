@@ -12,29 +12,29 @@
     {
       "alias": "bp",
       "name": "businesspartnermcp",
-      "domain": "CRM / Business Partners",
+      "domain": "Suppliers / Business Partners",
       "url": "https://YOUR_IS_TENANT.integration.cloud.sap/businesspartnermcp",
       "token_url": "https://YOUR_AUTH_DOMAIN.authentication.REGION.hana.ondemand.com/oauth/token",
       "client_id": "YOUR_CLIENT_ID_FOR_BP",
       "client_secret": "YOUR_CLIENT_SECRET_FOR_BP"
     },
     {
-      "alias": "spotify",
-      "name": "spotifymcp",
-      "domain": "Media / Spotify Catalog",
-      "url": "https://YOUR_IS_TENANT.integration.cloud.sap/spotifymcp",
+      "alias": "inbound",
+      "name": "inbounddeliverymcp",
+      "domain": "Logistics / Inbound Deliveries",
+      "url": "https://YOUR_IS_TENANT.integration.cloud.sap/inbounddeliverymcp",
       "token_url": "https://YOUR_AUTH_DOMAIN.authentication.REGION.hana.ondemand.com/oauth/token",
-      "client_id": "YOUR_CLIENT_ID_FOR_SPOTIFY",
-      "client_secret": "YOUR_CLIENT_SECRET_FOR_SPOTIFY"
+      "client_id": "YOUR_CLIENT_ID_FOR_INBOUND",
+      "client_secret": "YOUR_CLIENT_SECRET_FOR_INBOUND"
     },
     {
-      "alias": "email",
-      "name": "emailmcp",
-      "domain": "Comms / Transactional Email",
-      "url": "https://YOUR_IS_TENANT.integration.cloud.sap/emailmcp",
+      "alias": "stock",
+      "name": "materialstockmcp",
+      "domain": "Warehouse / Material Stock",
+      "url": "https://YOUR_IS_TENANT.integration.cloud.sap/materialstockmcp",
       "token_url": "https://YOUR_AUTH_DOMAIN.authentication.REGION.hana.ondemand.com/oauth/token",
-      "client_id": "YOUR_CLIENT_ID_FOR_EMAIL",
-      "client_secret": "YOUR_CLIENT_SECRET_FOR_EMAIL"
+      "client_id": "YOUR_CLIENT_ID_FOR_STOCK",
+      "client_secret": "YOUR_CLIENT_SECRET_FOR_STOCK"
     }
   ],
 

@@ -1,12 +1,14 @@
 # 1. Purchase Order MCP Server
 
-This section walks you through the complete end-to-end process of building, deploying, and connecting a Purchase Order MCP Server. Every other server in this tutorial follows the same pattern — so read this one carefully.
+This is the **complete, end-to-end** walkthrough — build, deploy, publish, and test a Purchase Order MCP Server. The other three servers in this workshop (Business Partner, Inbound Delivery, Material Stock) follow the **exact same pattern**, so read this one carefully; the later sections only give you the values that change.
 
 **What you will build:**
 
 ```
 AI Client  ──MCP──▶  SAP IS MCP Server  ──▶  API Artifact  ──▶  SAP Purchase Order API
 ```
+
+In the supplier-risk story, this server answers: *"What are we committed to spend, and with whom?"*
 
 ---
 
@@ -23,9 +25,9 @@ AI Client  ──MCP──▶  SAP IS MCP Server  ──▶  API Artifact  ─�
 
     | Field | Value |
     |---|---|
-    | Name | `MCP Workshop` (or any name you choose) |
+    | Name | `SAP BAH MCP Workshop` (or any name you choose) |
     | Technical Name | Auto-populated — leave as-is |
-    | Short Description | Optional |
+    | Short Description | **Required** — enter any text (e.g. `MCP servers wrapping SAP BAH APIs`) |
 
 4. Click **Save**
 
@@ -37,23 +39,20 @@ AI Client  ──MCP──▶  SAP IS MCP Server  ──▶  API Artifact  ─�
 
 **Why this step:** SAP IS does not know the shape of the Purchase Order API on its own. An **OpenAPI specification** describes every operation, path, and field — SAP IS reads it to generate the API artifact (and later the MCP tools) automatically. You download that spec from the **SAP Business Accelerator Hub (BAH)**, SAP's public catalog of standard APIs.
 
-1. Open the [SAP Business Accelerator Hub](https://api.sap.com/api/CE_PURCHASEORDER_0001/overview) — Purchase Order API page
+1. Open the [SAP Business Accelerator Hub — Purchase Order API](https://api.sap.com/api/CE_PURCHASEORDER_0001/overview).
 
-![SAP Business Accelerator Hub — Purchase Order API overview](images/edited/fig-05.png)
+2. In the **API Resources** area, open the **API Specification** tab and download the spec as **OpenAPI JSON**. SAP IS imports the `.json` form reliably — do **not** use the OpenAPI YAML or OData EDMX options for this artifact.
 
-2. In the **API Specification** section, download the spec as **OpenAPI JSON**. SAP IS imports the `.json` form reliably — do **not** use the OpenAPI YAML or OData EDMX options for this artifact.
+![SAP BAH Purchase Order — API Specification tab with the OpenAPI JSON download link](images/edited/fig-06.png)
 
-![SAP BAH Purchase Order — API Specification section with the OpenAPI JSON download link](images/edited/fig-06.png)
-
-3. Note the **Sandbox URL** shown on the page — you will need it in the next step:
+3. Open the **Configuration Details** tab and copy the **Sandbox URL** — this is the full backend URL you will paste into the API artifact in Part C:
     ```
-    https://sandbox.api.sap.com
+    https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata4/sap/api_purchaseorder_2/srvd_a2x/sap/purchaseorder/0001
     ```
 
-4. While on BAH, click the **Show API Key** button in the page header — it is available on **every** BAH page, so you do not need to open your profile. Copy the key; you will need it in Part D. *This key is what authenticates your calls to the SAP sandbox backend.*
+4. Click the **Show API Key** button in the page header — it is available on **every** BAH page, so you do not need to open your profile. Copy the key; you will need it in Part D. *This single key authenticates your calls to the SAP sandbox backend, and it is the **same key** for all four APIs in this workshop.*
 
-!!! warning "OpenAPI version requirement"
-    SAP IS requires **OpenAPI 3.0 (3.0.0–3.0.4)**. If the downloaded file starts with `"swagger": "2.0"`, it is Swagger 2.0 and must be converted before use. Check the first line of the file.
+![SAP BAH Purchase Order — Show API Key button (❶), the Configuration Details tab (❷), and the Sandbox URL (❸)](images/edited/fig-05.png)
 
 ---
 
@@ -124,7 +123,7 @@ The API artifact is created with status **Not Deployed**.
     | Action | `Create` |
     | Name | `APIKey` |
     | Source Type | `Constant` |
-    | Source Value | *Your API key from SAP BAH* |
+    | Source Value | *Your API key from SAP BAH — copied via **Show API Key** in Part B* |
 
 ![Content Modifier — APIKey header configured](images/edited/fig-15.png)
 
@@ -186,7 +185,7 @@ The API artifact is created with status **Not Deployed**.
 5. Click **Add**
 
 !!! tip "Auto-wired Policies"
-    When an MCP Server is created from an API artifact, the Policies HTTP connection is **automatically configured** to route through the API artifact. You do not need to manually set up authentication in the Policies tab for this server type. This is different from Sections 3 and 4 (Spotify and Twilio), where you must configure it manually.
+    When an MCP Server is created from an API artifact, the Policies HTTP connection is **automatically configured** to route through the API artifact. You do not need to manually set up authentication in the Policies tab — this is the big advantage of using BAH APIs for all four servers in this workshop.
 
 6. **Add the Developer Hub scope.** Open the new **PurchaseOrder_MCP** artifact → **Authorization** tab → **Policy Setting** → **Scope**, and add the scope:
 
@@ -197,7 +196,7 @@ The API artifact is created with status **Not Deployed**.
     Then **Save**.
 
     !!! info "Why `uaa.resource`?"
-        This is the scope carried by the access token that Developer Hub issues for your subscription (you create those credentials in Part I). Adding it here tells the MCP Server to accept tokens minted by Developer Hub. Without it, authenticated calls from your agent are rejected even though the token is valid.
+        This is the scope carried by the access token that Developer Hub issues for your subscription — you create those credentials next, in Part I. Adding it here tells the MCP Server to accept tokens minted by Developer Hub. Without it, authenticated calls from your agent are rejected even though the token is valid.
 
 ![MCP Server Authorization — Policy Settings with scope API.invoke and uaa.resource](images/edited/fig-23.png)
 
@@ -239,15 +238,16 @@ The **Developer Hub** is SAP's API catalog. Publishing your MCP Server here lets
 
 ![Developer Hub — Manage Content: Business Systems tab](images/edited/fig-28.png)
 
-6. Go to the **MCP Servers** tab — your deployed MCP Server is listed here
-7. Check the box next to your MCP Server to select it
+6. The business system opens with three tabs — **Overview**, **APIs**, and **AI Artifacts**. Open the **APIs** tab; every API artifact you deployed is listed here.
 
-!!! note "Trial vs. enhanced tenants"
-    On a **trial** Integration Suite tenant this tab is labelled **MCP Servers**. On an **enhanced (production)** tenant the same content lives under the **APIs and AI Artifacts** tab. The steps are otherwise identical.
+    !!! note "Why the APIs tab, not an \"MCP Servers\" tab?"
+        You publish and subscribe to the **API**, not the MCP Server directly — the MCP Server is exposed *through* its API artifact. The Developer Hub lists everything under **APIs** and **AI Artifacts**; there is no separate MCP Servers tab.
 
-![Developer Hub — Business System: MCP Servers tab with MCP Server selected](images/edited/fig-29.png)
+7. Check the box next to your API (e.g. **Purchase Order**), then click **Create Product**
 
-8. Click **Create Product** and enter a name, ID, and description of your choice
+![Developer Hub — Business System APIs tab with the Purchase Order API selected and the Create Product button](images/edited/bah-devhub-apis.png)
+
+8. In the **Create Product** dialog, enter a name, ID, and description of your choice
 
 ![Developer Hub — Create Product dialog](images/edited/fig-30.png)
 
@@ -265,23 +265,23 @@ The **Developer Hub** is SAP's API catalog. Publishing your MCP Server here lets
 
 AI agents authenticate using credentials generated from a **subscription** to your product.
 
-1. Click the **Developer Hub** logo to return to the home page
-2. Find and click your published product
+1. Click the **Developer Hub** logo to return to the home page. Under **Select a Product to Explore**, find and click your published product (e.g. **Purchase order Demo**).
 
-![Developer Hub — products catalog homepage](images/edited/fig-33.png)
+![Developer Hub — Select a Product to Explore: published product cards](images/edited/bah-devhub-products.png)
 
-3. Go to the **MCP Servers** tab to see the MCP Server inside the product
-4. Click **Subscribe** on the MCP Server card → select **Create New Subscription for Agent**
+2. On the product page, open the **APIs** tab to see the API inside the product. Click the **Subscribe** dropdown (top right) and choose **Create New Subscription**.
 
-![Developer Hub — Create New Subscription for Agent dialog](images/edited/fig-34.png)
+3. In the dialog, enter a **Name** and **Short Text**, leave the rest at their defaults (keep **Take me to this new subscription now** ticked), and click **Create**.
 
-5. Enter a name and short description → click **Create**
+![Developer Hub — Create New Subscription dialog for the product](images/edited/bah-subscribe.png)
+
+!!! note "Credential generation takes a moment"
+    After you click **Create**, Developer Hub provisions the OAuth2 client and generates your **Key** and **Secret** in the background — this can take anywhere from a few seconds to a minute or two. If the credentials don't appear right away, wait a moment and refresh the subscription page.
 
 **Retrieve your credentials:**
 
-6. Click the **Developer Hub** logo → find your product → click **Associated Subscriptions**
-7. Click your subscription name to open it
-8. The credentials page shows:
+4. With **Take me to this new subscription now** ticked, you land directly on the subscription. (To return later: **Developer Hub** logo → your product → **Associated Subscriptions** → click your subscription name.)
+5. The credentials page shows:
 
     | Credential | What it is |
     |---|---|
@@ -358,14 +358,14 @@ curl -s -X POST "YOUR_MCP_URL" \
 A successful call returns real purchase-order records in the `result.content` field. If you get data back, the end-to-end path is live. ✅
 
 !!! note "`initialize` first in a real client"
-    `tools/list` and `tools/call` work directly here because the gateway accepts them statelessly for a smoke test. A full MCP client should still send the `initialize` request first — see [Section 5](05-ai-agent.md).
+    `tools/list` and `tools/call` work directly here because the gateway accepts them statelessly for a smoke test. A full MCP client should still send the `initialize` request first — see [Section 5](bah-05-ai-agent.md).
 
 ---
 
 ## Checklist
 
 - [ ] Integration Package created
-- [ ] OpenAPI JSON spec downloaded from SAP BAH (OpenAPI 3.0)
+- [ ] OpenAPI JSON spec downloaded from SAP BAH
 - [ ] API artifact created with the full backend URL and base path
 - [ ] **Trust Upstream MCP Authorization** enabled on the API artifact
 - [ ] Content Modifier configured with `APIKey` header
@@ -376,4 +376,4 @@ A successful call returns real purchase-order records in the `result.content` fi
 - [ ] Product published in Developer Hub (Scheduled Requests shows Success)
 - [ ] Agent subscription created and credentials (Token URL, Key, Secret) saved
 
-Next: [Business Partner MCP Server →](02-business-partner-mcp.md)
+Next: [Business Partner MCP Server →](bah-02-business-partner.md)

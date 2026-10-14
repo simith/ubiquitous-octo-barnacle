@@ -2,22 +2,20 @@
   var STORE = 'sap-mcp-progress';
 
   var PAGE_TOTALS = {
-    '00-prerequisites':        2,
-    '01-purchase-order-mcp':   11,
-    '02-business-partner-mcp': 6,
-    '03-spotify-mcp':          8,
-    '04-twilio-mcp':           8,
-    '05-ai-agent':             4,
+    'bah-01-purchase-order':   11,
+    'bah-02-business-partner':  6,
+    'bah-03-inbound-delivery':  6,
+    'bah-04-material-stock':    6,
+    'bah-05-ai-agent':          5,
   };
-  var GRAND_TOTAL = 39;
+  var GRAND_TOTAL = 34;
 
   var PAGES = [
-    { id: '00-prerequisites',        label: '0. Prerequisites',          href: '../00-prerequisites/' },
-    { id: '01-purchase-order-mcp',   label: '1. Purchase Order MCP',     href: '../01-purchase-order-mcp/' },
-    { id: '02-business-partner-mcp', label: '2. Business Partner MCP',   href: '../02-business-partner-mcp/' },
-    { id: '03-spotify-mcp',          label: '3. Spotify MCP',            href: '../03-spotify-mcp/' },
-    { id: '04-twilio-mcp',           label: '4. Twilio Email MCP',       href: '../04-twilio-mcp/' },
-    { id: '05-ai-agent',             label: '5. AI Agent Client',        href: '../05-ai-agent/' },
+    { id: 'bah-01-purchase-order',   label: '1. Purchase Order MCP',    href: '../bah-01-purchase-order/' },
+    { id: 'bah-02-business-partner', label: '2. Business Partner MCP',  href: '../bah-02-business-partner/' },
+    { id: 'bah-03-inbound-delivery', label: '3. Inbound Delivery MCP',  href: '../bah-03-inbound-delivery/' },
+    { id: 'bah-04-material-stock',   label: '4. Material Stock MCP',    href: '../bah-04-material-stock/' },
+    { id: 'bah-05-ai-agent',         label: '5. AI Agent Client',       href: '../bah-05-ai-agent/' },
   ];
 
   function load() {

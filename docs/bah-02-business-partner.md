@@ -1,6 +1,8 @@
 # 2. Business Partner MCP Server
 
-The process for the Business Partner MCP Server is **identical to Section 1** (Purchase Order). This page provides only the Business Partner-specific values. Follow [Section 1](01-purchase-order-mcp.md) for all steps — substituting the values below where indicated.
+The process for the Business Partner MCP Server is **identical to [Section 1](bah-01-purchase-order.md)** (Purchase Order). This page provides only the Business Partner-specific values. Follow Section 1 for every step — substituting the values below where indicated.
+
+In the supplier-risk story, this server answers: *"Who is this supplier — name, contact, country, active status?"*
 
 ---
 
@@ -12,7 +14,7 @@ Download the OpenAPI spec from the [SAP Business Accelerator Hub — Business Pa
 
 ![SAP BAH Business Partner API overview with the API Specification download section](images/edited/fig-36.png)
 
-Download the OpenAPI spec from the **API Specification** section as **OpenAPI JSON** (same as the Purchase Order server — the `.json` form imports reliably into SAP IS).
+Download it from the **API Specification** section as **OpenAPI JSON** (same as Purchase Order — the `.json` form imports reliably into SAP IS).
 
 ### API Artifact Settings (Part C of Section 1)
 
@@ -35,7 +37,7 @@ Download the OpenAPI spec from the **API Specification** section as **OpenAPI JS
 | Version | `1.0.0` |
 | Runtime Profile | `Integration Cell` |
 
-### Recommended Tools to Select (Part F, Step 3)
+### Recommended Tools to Select (Part F — Create Tools)
 
 Select these **GET** operations when choosing tools in the MCP Server wizard:
 
@@ -52,9 +54,9 @@ Select these **GET** operations when choosing tools in the MCP Server wizard:
 
 ## Steps Reference
 
-Follow all parts of [Section 1](01-purchase-order-mcp.md) with the values above substituted:
+Follow all parts of [Section 1](bah-01-purchase-order.md) with the values above substituted:
 
-- **Parts A–B** — Use the same Integration Package you created in Section 1
+- **Parts A–B** — Use the same Integration Package you created in Section 1; download the Business Partner spec from BAH
 - **Part C** — Upload the Business Partner OpenAPI JSON file; use the URL, Service Type (`REST`), and base path above; then enable **Trust Upstream MCP Authorization**
 - **Part D** — Add the Content Modifier with the same `APIKey` header (same BAH API key)
 - **Parts E–J** — Identical process; use `BusinessPartner_MCP` as the artifact name, select **GET** tools only, and add the `uaa.resource` scope on the MCP Server's Authorization
@@ -64,10 +66,10 @@ Follow all parts of [Section 1](01-purchase-order-mcp.md) with the values above 
 ## Checklist
 
 - [ ] Business Partner OpenAPI spec downloaded from SAP BAH
-- [ ] API artifact created with Business Partner URL and base path
-- [ ] MCP Server artifact created with Business Partner tools selected
+- [ ] API artifact created with Business Partner URL and base path (Service Type `REST`)
+- [ ] MCP Server artifact created with Business Partner GET tools selected
 - [ ] MCP Server deployed (STARTED)
 - [ ] Product published and agent subscription created in Developer Hub
 - [ ] Credentials (Token URL, Key, Secret) saved
 
-Next: [Spotify MCP Server →](03-spotify-mcp.md)
+Next: [Inbound Delivery MCP Server →](bah-03-inbound-delivery.md)
